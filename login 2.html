@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Fashion Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            width: calc(100% - 20px);
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .register-link {
+            margin-top: 12px;
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .register-link:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function loginUser(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const errorDiv = document.getElementById("login-error");
+            
+            const storedUser = JSON.parse(localStorage.getItem(username));
+            
+            if (storedUser && storedUser.password === password) {
+                alert("Login successful!");
+                window.location.href = "index.html";
+            } else {
+                errorDiv.innerText = "Invalid credentials. Please try again.";
+            }
+        }
+
+        function validateRegistration(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("reg-name").value.trim();
+            const email = document.getElementById("reg-email").value.trim();
+            const phone = document.getElementById("reg-phone").value.trim();
+            const password = document.getElementById("reg-password").value.trim();
+            const errorDiv = document.getElementById("register-error");
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^\d{10,}$/;
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+            
+            if (name === "" || email === "" || phone === "" || password === "") {
+                errorDiv.innerText = "All fields are required.";
+                return;
+            }
+            
+            if (!emailRegex.test(email)) {
+                errorDiv.innerText = "Invalid email format.";
+                return;
+            }
+            
+            if (!phoneRegex.test(phone)) {
+                errorDiv.innerText = "Phone number must contain at least 10 digits.";
+                return;
+            }
+            
+            if (!passwordRegex.test(password)) {
+                errorDiv.innerText = "Password must be at least 6 characters long, include an uppercase letter and a number.";
+                return;
+            }
+            
+            localStorage.setItem(email, JSON.stringify({ name, email, phone, password }));
+            alert("Registration successful! You can now log in.");
+            toggleForm();
+        }
+
+        function toggleForm() {
+            document.getElementById('login-form').classList.toggle('hidden');
+            document.getElementById('register-form').classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Personalized Fashion Recommendations</h1>
+
+        <!-- Login Form -->
+        <div id="login-form">
+            <h2>Login</h2>
+            <form onsubmit="loginUser(event)">
+                <input type="text" id="username" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p id="login-error" class="error"></p>
+            </form>
+            <a href="#" class="register-link" onclick="toggleForm()">Don't have an account? Register here</a>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form" class="hidden">
+            <h2>Register</h2>
+            <form onsubmit="validateRegistration(event)">
+                <input type="text" id="reg-name" placeholder="Name" required>
+                <input type="email" id="reg-email" placeholder="Email" required>
+                <input type="tel" id="reg-phone" placeholder="Phone Number" required>
+                <input type="password" id="reg-password" placeholder="Password" required>
+                <button type="submit">Register</button>
+                <p id="register-error" class="error"></p>
+            </form>
+            <a href="#" class="register-link" onclick="toggleForm()">Already have an account? Login here</a>
+        </div>
+    </div>
+</body>
+</html>
