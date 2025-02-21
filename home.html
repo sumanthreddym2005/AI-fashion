@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Fashion Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            padding: 100px 20px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .cta {
+            background-color: white;
+            color: #ff758c;
+            padding: 15px 25px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .cta:hover {
+            background-color: #ff7eb3;
+            color: white;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 50px;
+            background-color: white;
+        }
+        .feature {
+            padding: 20px;
+            background-color: #ffebf0;
+            border-radius: 10px;
+        }
+        .how-it-works {
+            padding: 50px;
+            background-color: #f9f9f9;
+        }
+        .how-it-works ul {
+            list-style-type: none;
+        }
+        .how-it-works li {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .contact {
+            padding: 30px;
+            background-color: #222;
+            color: white;
+        }
+        footer {
+            padding: 20px;
+            background-color: #111;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Fashion AI</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Discover Your Perfect Style with AI</h1>
+        <p>Get personalized fashion recommendations based on your body type and preferences.</p>
+        <button class="cta">Upload Your Photo</button>
+        <button class="cta secondary">Start Chat with AI Stylist</button>
+    </section>
+
+    <section id="features" class="features">
+        <div class="feature">
+            <h2>AI-Powered Body Analysis</h2>
+            <p>Upload an image, and our AI detects your body type.</p>
+        </div>
+        <div class="feature">
+            <h2>Personalized Outfit Suggestions</h2>
+            <p>Get dress recommendations that match your style and fit.</p>
+        </div>
+        <div class="feature">
+            <h2>AI Chatbot & Voice Assistant</h2>
+            <p>Talk to our AI stylist for instant fashion advice.</p>
+        </div>
+        <div class="feature">
+            <h2>Trend Updates & Style Tips</h2>
+            <p>Stay updated with the latest fashion trends.</p>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2>How It Works</h2>
+        <ul>
+            <li><strong>Step 1:</strong> Upload a full-body image.</li>
+            <li><strong>Step 2:</strong> AI analyzes your body type.</li>
+            <li><strong>Step 3:</strong> Get outfit recommendations tailored for you.</li>
+            <li><strong>Step 4:</strong> Interact with our chatbot for styling tips.</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <p>Email: support@fashionai.com</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Fashion AI. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
