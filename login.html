@@ -64,15 +64,13 @@
     </style>
     <script>
         function loginUser(event) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault();
 
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-
-            // Simple authentication check (Replace with backend validation if needed)
             if (username === "admin" && password === "1234") {
                 alert("Login successful!");
-                window.location.href = "home.html"; // Redirect to home page
+                window.location.href = "home.html"; 
             } else {
                 alert("Invalid credentials. Please try again.");
             }
